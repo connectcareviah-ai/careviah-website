@@ -1,9 +1,11 @@
 {
     "name": "content-ops-starter",
     "version": "0.1.0",
+    "main": "next.config.js",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
+        "postbuild": "node scripts/generate-sitemap.mjs",
         "start": "next start"
     },
     "dependencies": {
@@ -32,6 +34,5 @@
         "autoprefixer": "^10.4.19",
         "prettier": "^3.3.2",
         "typescript": "^5.6.2"
-    },
-    "main": "next.config.js"
+    }
 }

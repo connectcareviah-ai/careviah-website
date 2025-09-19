@@ -1,19 +1,28 @@
-import Head from 'next/head';
+import Seo from '../components/Seo';
 import styles from '../styles/home.module.css';
 
 export default function Home() {
-    const SHOW_HERO_IMAGE = true; // set to false if you don't want an image yet
+    const SHOW_HERO_IMAGE = true; // set to false to hide the image
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL; // set this in Netlify env
 
     return (
         <>
-            <Head>
-                <title>Careviah — Professional Home Care Services</title>
-                <meta
-                    name="description"
-                    content="Compassionate home care with professional standards—healthcare assistance, housekeeping, and daily living support."
-                />
-            </Head>
+            <Seo
+                title="Comprehensive Elder Care at Home"
+                description="Qualified nurses and trained caregivers coordinated through clear checklists and communication. We help your parents stay safe, dignified, and comfortable—at home."
+                canonical={siteUrl ? `${siteUrl}/` : undefined}
+                jsonLd={{
+                    "@context": "https://schema.org",
+                    "@type": "LocalBusiness",
+                    "name": "Careviah",
+                    "url": siteUrl || undefined,
+                    "areaServed": "Kerala, India",
+                    "telephone": "+918547046536",
+                    "sameAs": ["https://wa.me/918590722353"]
+                }}
+            />
 
+            {/* HERO */}
             <section className={styles.wrap}>
                 <div className={styles.heroGrid}>
                     <div>
@@ -37,53 +46,41 @@ export default function Home() {
 
                     {SHOW_HERO_IMAGE && (
                         <div className={styles.heroMedia}>
-                            <img
-                                className={styles.poster}
-                                src="/careviah-hero.jpg"   // change to /assets/careviah-hero.jpg if that's your path
-                                alt="Careviah elder care at home"
-                            />
+                            <img className={styles.poster} src="/careviah-hero.jpg" alt="Careviah elder care at home" />
                         </div>
                     )}
                 </div>
             </section>
 
+            {/* SERVICES */}
             <section id="services" className={styles.section}>
                 <h2 className={styles.h2}>Our Core Services</h2>
                 <p style={{ color: "#475569", margin: "0 0 14px" }}>Complete, reliable support tailored to each family.</p>
                 <div className={styles.grid}>
-                    <article className={styles.card}>
-                        <h3>Healthcare Assistance</h3>
-                        <p>Vitals monitoring, medication reminders, post-procedure support, wound care guidance (as per protocol).</p>
-                    </article>
-                    <article className={styles.card}>
-                        <h3>Housekeeping</h3>
-                        <p>Light cleaning, laundry, kitchen assistance, and hygiene routines to keep home safe and comfortable.</p>
-                    </article>
-                    <article className={styles.card}>
-                        <h3>Daily Living Support</h3>
-                        <p>Meal prep, mobility help, companionship, and errands—aligned to your loved one’s daily schedule.</p>
-                    </article>
+                    <article className={styles.card}><h3>Healthcare Assistance</h3><p>Vitals monitoring, medication reminders, post-procedure support.</p></article>
+                    <article className={styles.card}><h3>Housekeeping</h3><p>Light cleaning, laundry, kitchen assistance, and hygiene routines.</p></article>
+                    <article className={styles.card}><h3>Daily Living Support</h3><p>Meal prep, mobility help, companionship, and errands.</p></article>
                 </div>
             </section>
 
+            {/* WHY */}
             <section id="why" className={`${styles.section} ${styles.split}`}>
                 <div>
                     <h2 className={styles.h2}>Why Choose Careviah</h2>
                     <ul>
                         <li>Professional process with clear scope and checklists</li>
-                        <li>Transparent scheduling and regular communication updates</li>
+                        <li>Transparent scheduling and regular communication</li>
                         <li>Flexible add-ons for evolving needs</li>
-                        <li>Respect, safety, and consistency at the center of care</li>
+                        <li>Respect, safety, and consistency</li>
                     </ul>
                 </div>
                 <div className={styles.card}>
                     <strong>Add-Ons</strong>
-                    <p style={{ marginTop: 8 }}>
-                        Ambulance &amp; hospital link, laundry, gardening, deep cleaning, and other household support as needed.
-                    </p>
+                    <p style={{ marginTop: 8 }}>Ambulance &amp; hospital link, laundry, gardening, deep cleaning, and more.</p>
                 </div>
             </section>
 
+            {/* CTA / CONTACT */}
             <section id="contact" className={styles.section}>
                 <div className={styles.cta}>
                     <strong>Ready to talk?</strong>&nbsp;
@@ -97,4 +94,3 @@ export default function Home() {
         </>
     );
 }
-
