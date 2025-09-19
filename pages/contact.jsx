@@ -1,24 +1,33 @@
 import Seo from '../components/Seo';
+import { useCallback } from 'react';
 
 export default function Contact() {
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    const data = new URLSearchParams(new FormData(form)).toString();
+
+    // Post to the static file so Netlify picks it up
+    await fetch('/__forms.html', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data,
+    });
+
+    window.location.href = '/thank-you';
+  }, []);
+
   return (
     <>
       <Seo title="Contact" description="Request home-care support or speak with our team." />
       <h1>Contact</h1>
       <p>We usually respond within the same day.</p>
 
-      <form
-        name="contact"
-        method="POST"
-        data-netlify="true"
-        netlify-honeypot="bot-field"
-        action="/thank-you"
-        style={{ maxWidth: 560, padding: "16px", border: "1px solid #eee", borderRadius: 12, background: "#fff" }}
-      >
+      <form name="contact" onSubmit={handleSubmit}
+        style={{ maxWidth: 560, padding: "16px", border: "1px solid #eee", borderRadius: 12, background: "#fff" }}>
         <input type="hidden" name="form-name" value="contact" />
-        <p hidden>
-          <label>Don’t fill this out: <input name="bot-field" /></label>
-        </p>
+        <p hidden><label>Don’t fill this out: <input name="bot-field" /></label></p>
 
         <label>Full name
           <input name="name" type="text" required style={{ display: "block", width: "100%", marginTop: 6, marginBottom: 12 }} />
@@ -44,13 +53,6 @@ export default function Contact() {
           Send request
         </button>
       </form>
-
-      <p style={{ marginTop: 16 }}>
-        Or call <a href="tel:+918547046536">+91 85470 46536</a> ·
-        WhatsApp <a href="https://wa.me/918590722353">+91 85907 22353</a>
-      </p>
     </>
   );
 }
-
-
