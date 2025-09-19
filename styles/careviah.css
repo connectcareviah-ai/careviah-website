@@ -16,9 +16,9 @@ html,
 body {
     margin: 0;
     padding: 0;
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: var(--text);
     background: var(--bg);
+    color: var(--text);
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -38,7 +38,7 @@ a:hover {
     padding: 0 16px
 }
 
-/* ---------- Header ---------- */
+/* header */
 header.siteHeader {
     position: sticky;
     top: 0;
@@ -67,7 +67,6 @@ header.siteHeader {
     color: #64748b
 }
 
-/* Nav */
 .nav {
     display: flex;
     gap: 22px;
@@ -77,7 +76,7 @@ header.siteHeader {
 .nav a {
     color: #0f172a;
     opacity: .8;
-    transition: opacity .2s ease
+    transition: opacity .2s
 }
 
 .nav a:hover,
@@ -85,7 +84,7 @@ header.siteHeader {
     opacity: 1
 }
 
-/* ---------- Footer ---------- */
+/* footer */
 footer.siteFooter {
     margin-top: 48px;
     border-top: 1px solid #eef2f7;
@@ -101,7 +100,7 @@ footer.siteFooter {
     justify-content: space-between
 }
 
-/* ---------- UI ---------- */
+/* ui */
 .btn {
     display: inline-block;
     padding: 10px 14px;
@@ -109,7 +108,7 @@ footer.siteFooter {
     border: 1px solid #e5e7eb;
     background: #fff;
     color: #0f172a;
-    transition: transform .04s ease, box-shadow .2s ease, background .2s ease;
+    transition: transform .04s, box-shadow .2s, background .2s;
 }
 
 .btn:hover {
@@ -145,7 +144,7 @@ footer.siteFooter {
     padding: 6px 10px
 }
 
-/* Generic card look (home uses its own module too) */
+/* generic card */
 .card {
     background: var(--surface);
     border: 1px solid #eaeef3;
