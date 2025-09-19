@@ -23,7 +23,7 @@ export default function Home() {
             />
 
             {/* HERO */}
-            <section className={styles.wrap}>
+            <section className={`${styles.wrap} ${styles.hero}`}>
                 <div className={styles.heroGrid}>
                     <div>
                         <span className={styles.eyebrow}>Serving families across Kerala</span>

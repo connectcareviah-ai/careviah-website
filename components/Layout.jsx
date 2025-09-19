@@ -1,23 +1,33 @@
+import Link from 'next/link';
+
 export default function Layout({ children }) {
   return (
     <>
-      <header className="site-header" style={{padding:"12px 16px",borderBottom:"1px solid #eee"}}>
-        <div style={{maxWidth:1100,margin:"0 auto",display:"flex",alignItems:"center",gap:16}}>
-          <div>
-            <strong>Careviah</strong>
-            <div style={{fontSize:12,color:"#64748b"}}>Near in Heart, Always in Care</div>
+      <header className="siteHeader">
+        <div className="container bar">
+          <div className="brand">
+            Careviah
+            <small>Near in Heart, Always in Care</small>
           </div>
-          <nav style={{marginLeft:"auto",display:"flex",gap:18}}>
-            <a href="/">Home</a>
+          <nav className="nav">
+            <Link href="/">Home</Link>
             <a href="/#services">Services</a>
             <a href="/#why">Why Careviah</a>
             <a href="/#contact">Contact</a>
           </nav>
         </div>
       </header>
-      <main style={{maxWidth:1100,margin:"0 auto"}}>{children}</main>
-      <footer style={{borderTop:"1px solid #eee",padding:"16px",textAlign:"center"}}>
-        © {new Date().getFullYear()} Careviah
+
+      <main className="container">{children}</main>
+
+      <footer className="siteFooter">
+        <div className="container bar">
+          <div>© {new Date().getFullYear()} Careviah • Kerala, India</div>
+          <div>
+            <a href="tel:+918547046536" className="btn ghost" style={{ marginRight: 8 }}>Call</a>
+            <a href="https://wa.me/918590722353" className="btn primary">WhatsApp</a>
+          </div>
+        </div>
       </footer>
     </>
   );
