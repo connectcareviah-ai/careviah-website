@@ -46,7 +46,7 @@ export default function Home() {
 
                     {SHOW_HERO_IMAGE && (
                         <div className={styles.heroMedia}>
-                            <img className={styles.poster} src="/careviah-hero.jpg" alt="Careviah elder care at home" />
+                            <img className={styles.poster} src="/assets/careviah-hero.jpg" alt="Careviah elder care at home" />
                         </div>
                     )}
                 </div>
