@@ -1,6 +1,4 @@
-/* Palette — make global so CSS Modules won't complain */
-
-/* Layout */
+/* Page wrapper & sections */
 .wrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -8,7 +6,7 @@
 }
 
 .section {
-  padding: 48px 0;
+  padding: 56px 0;
   background: transparent;
 }
 
@@ -23,7 +21,9 @@
 
 /* Hero */
 .hero {
-  background: radial-gradient(1400px 600px at -10% -10%, #ffffff 0, transparent 60%), var(--bg);
+  background:
+    radial-gradient(1400px 600px at -10% -10%, #ffffff 0, transparent 60%),
+    var(--bg);
 }
 
 .heroGrid {
@@ -32,12 +32,6 @@
   gap: 28px;
   align-items: center;
 }
-
-.heroMedia {
-  display: none;
-}
-
-/* image removed as requested */
 
 .eyebrow {
   display: inline-block;
@@ -276,11 +270,6 @@
 
 /* Responsive */
 @media (min-width: 720px) {
-  .heroGrid {
-    grid-template-columns: 1fr;
-  }
-
-  /* still single col; image removed */
   .grid>.card {
     grid-column: span 6;
   }
