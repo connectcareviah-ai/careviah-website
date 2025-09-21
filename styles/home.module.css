@@ -1,4 +1,4 @@
-/* Page wrapper & sections */
+/* Container + sections */
 .wrap {
   max-width: 1160px;
   margin: 0 auto;
@@ -10,20 +10,28 @@
   background: transparent;
 }
 
-/* Bands */
+/* Bands (background sections) */
 .bandWarm {
-  background: var(--butter);
+  background: #fff4d9;
+  /* butter */
+}
+
+.bandInk {
+  background: linear-gradient(180deg, #0f172a 0%, #0b2239 100%);
+  /* ink */
 }
 
 .bandDark {
-  background: linear-gradient(180deg, var(--inkDark) 0%, #0b2239 100%);
+  background: linear-gradient(180deg, #0f172a 0%, #0b2239 100%);
+  /* steps band */
 }
 
-/* Hero */
+/* HERO */
 .hero {
   background:
     radial-gradient(1400px 600px at -10% -10%, #ffffff 0, transparent 60%),
-    var(--bg);
+    #f6f8fb;
+  /* bg */
 }
 
 .heroGrid {
@@ -33,11 +41,22 @@
   align-items: center;
 }
 
+.heroMedia {
+  display: none;
+}
+
+.poster {
+  width: min(520px, 100%);
+  border-radius: 20px;
+  border: 1px solid rgba(2, 8, 23, 0.08);
+}
+
 .eyebrow {
   display: inline-block;
   padding: 10px 16px;
   border-radius: 999px;
   background: rgba(246, 198, 83, 0.25);
+  /* accent tint */
   color: #7a5a00;
   font-weight: 600;
   border: 1px solid rgba(246, 198, 83, 0.45);
@@ -47,12 +66,14 @@
   font-size: clamp(32px, 5.2vw, 56px);
   line-height: 1.04;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: #102a43;
+  /* ink text */
   margin: 14px 0 12px;
 }
 
 .sub {
-  color: var(--muted);
+  color: #475569;
+  /* muted */
   max-width: 62ch;
   font-size: 18px;
 }
@@ -74,7 +95,7 @@
   font-weight: 700;
   border: 1px solid transparent;
   transition: transform .05s ease, box-shadow .2s ease;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
 }
 
 .btn:active {
@@ -87,7 +108,7 @@
 }
 
 .primary:hover {
-  background: var(--brand);
+  background: #0e7490;
 }
 
 .secondary {
@@ -109,31 +130,36 @@
 
 .stat {
   background: #fff;
-  color: var(--muted);
+  color: #475569;
   border-radius: 999px;
   padding: 10px 14px;
   border: 1px solid rgba(2, 8, 23, 0.06);
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
 }
 
-/* Headings & text */
+/* Headings + text */
 .h2 {
   font-size: clamp(26px, 3.4vw, 38px);
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: #102a43;
   margin: 4px 0 18px;
 }
 
 .h2Light {
-  color: #fff;
+  color: #ffffff;
 }
 
 .lead {
-  color: var(--muted);
+  color: #475569;
   margin-bottom: 20px;
 }
 
-/* Grids & cards */
+.leadLight {
+  color: #c7d2e0;
+  margin-bottom: 20px;
+}
+
+/* Grid + cards */
 .grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -142,21 +168,27 @@
 
 .card {
   grid-column: span 12;
-  background: var(--card);
+  background: #ffffff;
   border-radius: 18px;
   padding: 20px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
   border: 1px solid rgba(2, 8, 23, 0.06);
+}
+
+.cardOnDark {
+  background: #ffffff;
+  border: 1px solid rgba(2, 8, 23, 0.08);
+  box-shadow: 0 18px 40px rgba(2, 8, 23, 0.35);
 }
 
 .card h3 {
   margin: 4px 0 8px;
   font-size: 22px;
-  color: var(--ink);
+  color: #102a43;
 }
 
 .card p {
-  color: var(--muted);
+  color: #475569;
 }
 
 .icon {
@@ -172,6 +204,11 @@
   margin-bottom: 10px;
 }
 
+.iconOnDark {
+  background: rgba(246, 198, 83, 0.22);
+  color: #f59e0b;
+}
+
 /* Why split */
 .wrapSplit {
   max-width: 1160px;
@@ -183,7 +220,7 @@
 }
 
 .bullets {
-  color: var(--muted);
+  color: #475569;
   padding-left: 16px;
 }
 
@@ -191,7 +228,7 @@
   margin: 8px 0;
 }
 
-/* Dark steps band */
+/* Steps (dark band) */
 .steps {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -203,16 +240,17 @@
   background: #ffffff;
   border-radius: 16px;
   padding: 18px 18px 16px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.18);
+  border: 1px solid rgba(2, 8, 23, 0.08);
 }
 
 .stepCard h3 {
   margin: 2px 0 6px;
-  color: var(--ink);
+  color: #102a43;
 }
 
 .stepCard p {
-  color: var(--muted);
+  color: #475569;
 }
 
 .badge {
@@ -221,7 +259,7 @@
   border-radius: 999px;
   font-weight: 800;
   color: #7a4a00;
-  background: var(--accent);
+  background: #f6c653;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -242,17 +280,17 @@
   border: 1px solid rgba(2, 8, 23, .06);
   border-radius: 14px;
   padding: 14px 18px;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
 }
 
 .faq summary {
   cursor: pointer;
   font-weight: 700;
-  color: var(--ink);
+  color: #102a43;
 }
 
 .faq p {
-  color: var(--muted);
+  color: #475569;
   margin-top: 8px;
 }
 
@@ -265,11 +303,29 @@
   padding: 16px;
   text-align: center;
   background: #fff;
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
+}
+
+/* Mobile sticky action bar */
+.mobileBar {
+  position: sticky;
+  bottom: 0;
+  z-index: 40;
+  display: none;
+  gap: 10px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, .8);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(2, 8, 23, 0.06);
 }
 
 /* Responsive */
 @media (min-width: 720px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+  }
+
+  /* image removed */
   .grid>.card {
     grid-column: span 6;
   }
@@ -291,5 +347,11 @@
 @media (min-width: 1100px) {
   .grid>.card {
     grid-column: span 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobileBar {
+    display: flex;
   }
 }
