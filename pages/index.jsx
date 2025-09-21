@@ -2,8 +2,8 @@ import Seo from '../components/Seo';
 import styles from '../styles/home.module.css';
 
 export default function Home() {
-    const SHOW_HERO_IMAGE = true; // set to false to hide the image
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL; // set this in Netlify env
+    const SHOW_HERO_IMAGE = true;
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
 
     return (
         <>
@@ -57,13 +57,13 @@ export default function Home() {
                 <h2 className={styles.h2}>Our Core Services</h2>
                 <p style={{ color: "#475569", margin: "0 0 14px" }}>Complete, reliable support tailored to each family.</p>
                 <div className={styles.grid}>
-                    <article className={styles.card}><h3>Healthcare Assistance</h3><p>Vitals monitoring, medication reminders, post-procedure support.</p></article>
-                    <article className={styles.card}><h3>Housekeeping</h3><p>Light cleaning, laundry, kitchen assistance, and hygiene routines.</p></article>
-                    <article className={styles.card}><h3>Daily Living Support</h3><p>Meal prep, mobility help, companionship, and errands.</p></article>
+                    <article className={styles.card}><h3>Healthcare Assistance</h3><p>Vitals monitoring, medication reminders, post-procedure support, wound-care guidance (as per protocol).</p></article>
+                    <article className={styles.card}><h3>Housekeeping</h3><p>Light cleaning, laundry, kitchen assistance, and hygiene routines to keep home safe and comfortable.</p></article>
+                    <article className={styles.card}><h3>Daily Living Support</h3><p>Meal prep, mobility help, companionship, and errands—aligned to your loved one’s daily schedule.</p></article>
                 </div>
             </section>
 
-            {/* WHY */}
+            {/* WHY + ADD-ONS */}
             <section id="why" className={`${styles.section} ${styles.split}`}>
                 <div>
                     <h2 className={styles.h2}>Why Choose Careviah</h2>
@@ -80,7 +80,72 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* CTA / CONTACT */}
+            {/* PROCESS */}
+            <section className={styles.section}>
+                <h2 className={styles.h2}>How It Works</h2>
+                <div className={styles.process}>
+                    <div className={styles.step}>
+                        <div><span className={styles.num}>1</span><strong>Call & Fit Check</strong></div>
+                        <p style={{ marginTop: 8 }}>We understand your needs and confirm service availability.</p>
+                    </div>
+                    <div className={styles.step}>
+                        <div><span className={styles.num}>2</span><strong>Care Plan</strong></div>
+                        <p style={{ marginTop: 8 }}>Scope, schedule, and safety checklist prepared by our team.</p>
+                    </div>
+                    <div className={styles.step}>
+                        <div><span className={styles.num}>3</span><strong>Caregiver Onboarding</strong></div>
+                        <p style={{ marginTop: 8 }}>Background-verified staff briefed and introduced.</p>
+                    </div>
+                    <div className={styles.step}>
+                        <div><span className={styles.num}>4</span><strong>Ongoing Support</strong></div>
+                        <p style={{ marginTop: 8 }}>Regular updates and supervision; add-ons as required.</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* TESTIMONIALS */}
+            <section className={styles.section}>
+                <h2 className={styles.h2}>What Families Say</h2>
+                <div className={styles.testis}>
+                    <figure className={styles.quote}>
+                        <blockquote>“Very professional and kind. The regular updates gave us complete peace of mind.”</blockquote>
+                        <small>— R. Menon, Kochi</small>
+                    </figure>
+                    <figure className={styles.quote}>
+                        <blockquote>“Nurse-supervised plan made recovery at home smooth for my father.”</blockquote>
+                        <small>— A. Varghese, Kottayam</small>
+                    </figure>
+                    <figure className={styles.quote}>
+                        <blockquote>“Flexible and dependable. Caregiver was punctual and respectful.”</blockquote>
+                        <small>— S. Thomas, Thrissur</small>
+                    </figure>
+                </div>
+            </section>
+
+            {/* FAQ */}
+            <section className={styles.section}>
+                <h2 className={styles.h2}>FAQs</h2>
+                <div className={styles.faq}>
+                    <details className={styles.faqItem}>
+                        <summary>Do you provide overnight or 24×7 support?</summary>
+                        <p>Yes. We schedule shifts based on need and availability, with oversight from our nurse lead.</p>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary>Are caregivers background-verified?</summary>
+                        <p>All staff are ID-verified and trained; references and checks are part of onboarding.</p>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary>Which locations do you cover?</summary>
+                        <p>Currently across Kerala with a focus on Kottayam / Pala and nearby districts.</p>
+                    </details>
+                    <details className={styles.faqItem}>
+                        <summary>How do we start?</summary>
+                        <p>Call or WhatsApp us. We’ll do a quick fit check and share a simple care plan.</p>
+                    </details>
+                </div>
+            </section>
+
+            {/* CONTACT CTA */}
             <section id="contact" className={styles.section}>
                 <div className={styles.cta}>
                     <strong>Ready to talk?</strong>&nbsp;

@@ -1,8 +1,31 @@
+/* --- Local utilities (no composes) --- */
+.cardBase {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow)
+}
+
+.badgeBase {
+  display: inline-block;
+  font-size: 12px;
+  background: var(--brand-50);
+  border: 1px solid var(--brand-100);
+  color: var(--brand-700);
+  border-radius: 999px;
+  padding: 6px 10px
+}
+
+/* layout */
 .wrap {
   padding: 32px 0
 }
 
-/* subtle hero background */
+.section {
+  padding: 40px 0
+}
+
+/* HERO with soft gradient */
 .hero {
   position: relative
 }
@@ -13,33 +36,25 @@
   inset: -40px 0 -40px 0;
   z-index: -1;
   background:
-    radial-gradient(80% 60% at 20% 10%, rgba(14, 116, 144, .10), transparent 60%),
-    radial-gradient(60% 60% at 90% 20%, rgba(14, 116, 144, .08), transparent 70%);
+    radial-gradient(90% 60% at 12% 10%, rgba(14, 116, 144, .12), transparent 60%),
+    radial-gradient(60% 60% at 95% 15%, rgba(14, 116, 144, .09), transparent 70%);
 }
 
-/* hero layout */
 .heroGrid {
   display: grid;
   grid-template-columns: 1.2fr .8fr;
-  gap: 32px;
+  gap: 36px;
   align-items: center
 }
 
 .eyebrow {
-  display: inline-block;
-  font-size: 12px;
-  background: #e6f6f9;
-  border: 1px solid #bfe7ef;
-  color: #0e7490;
-  border-radius: 999px;
-  padding: 6px 10px;
-  margin-bottom: 10px
+  composes: badgeBase;
 }
 
 .h1 {
   margin: 0 0 10px;
-  font-size: clamp(32px, 5vw, 54px);
-  line-height: 1.12
+  font-size: clamp(34px, 5vw, 56px);
+  line-height: 1.1
 }
 
 .sub {
@@ -76,23 +91,48 @@
 
 .poster {
   width: 100%;
-  max-width: 380px;
+  max-width: 360px;
   border-radius: 18px;
   border: 1px solid #eaeef3;
-  box-shadow: 0 18px 40px rgba(2, 6, 23, .12)
+  box-shadow: var(--shadow-lg)
 }
 
-/* sections */
-.section {
-  padding: 36px 0
+/* Buttons (scoped) */
+.btn {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #0f172a;
+  transition: transform .04s ease, box-shadow .2s ease, background .2s ease;
+  text-decoration: none;
 }
 
-.h2 {
-  margin: 0 0 12px;
-  font-size: 26px
+.btn:hover {
+  box-shadow: var(--shadow)
 }
 
-/* cards */
+.btn:active {
+  transform: translateY(1px)
+}
+
+.primary {
+  background: var(--brand-600);
+  color: #fff;
+  border-color: transparent
+}
+
+.primary:hover {
+  background: var(--brand-700)
+}
+
+.secondary {
+  background: #fff;
+  border-color: #e5e7eb
+}
+
+/* Services grid + cards */
 .grid {
   display: grid;
   gap: 18px;
@@ -100,18 +140,19 @@
 }
 
 .card {
-  padding: 18px;
-  border-radius: 14px;
-  border: 1px solid #eaeef3;
-  background: #fff;
-  box-shadow: 0 10px 30px rgba(2, 6, 23, .04)
+  composes: cardBase;
+  padding: 18px
 }
 
 .card h3 {
   margin: 6px 0 8px
 }
 
-/* split row */
+.h2 {
+  margin: 0 0 12px
+}
+
+/* Split row */
 .split {
   display: grid;
   gap: 24px;
@@ -119,17 +160,79 @@
   align-items: start
 }
 
-/* cta panel */
+/* Process timeline */
+.process {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px
+}
+
+.step {
+  composes: cardBase;
+  padding: 16px
+}
+
+.num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--brand-600);
+  color: #fff;
+  font-weight: 700;
+  margin-right: 8px
+}
+
+/* Testimonials */
+.testis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px
+}
+
+.quote {
+  composes: cardBase;
+  padding: 18px
+}
+
+.quote small {
+  color: #64748b
+}
+
+/* FAQ */
+.faq {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px
+}
+
+.faqItem {
+  composes: cardBase;
+  padding: 14px
+}
+
+.faqItem>summary {
+  cursor: pointer;
+  font-weight: 600
+}
+
+.faqItem>summary::-webkit-details-marker {
+  display: none
+}
+
+/* Bottom CTA */
 .cta {
   padding: 24px;
   text-align: center;
   background: #fff;
   border: 1px solid #eaeef3;
   border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(2, 6, 23, .04)
+  box-shadow: var(--shadow)
 }
 
-@media (max-width:900px) {
+@media (max-width:920px) {
   .heroGrid {
     grid-template-columns: 1fr
   }
@@ -139,6 +242,18 @@
   }
 
   .split {
+    grid-template-columns: 1fr
+  }
+
+  .process {
+    grid-template-columns: 1fr 1fr
+  }
+
+  .testis {
+    grid-template-columns: 1fr
+  }
+
+  .faq {
     grid-template-columns: 1fr
   }
 

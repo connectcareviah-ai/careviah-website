@@ -5,12 +5,15 @@ export default function Layout({ children }) {
     <>
       <header className="siteHeader">
         <div className="container bar">
-          <div className="brand">
+          <a href="/" className="brand">
             Careviah
             <small>Near in Heart, Always in Care</small>
-          </div>
+          </a>
+
           <nav className="nav">
+            {/* Use Link for internal pages */}
             <Link href="/">Home</Link>
+            {/* Hash links can stay as <a> */}
             <a href="/#services">Services</a>
             <a href="/#why">Why Careviah</a>
             <a href="/#contact">Contact</a>
@@ -22,14 +25,21 @@ export default function Layout({ children }) {
 
       <footer className="siteFooter">
         <div className="container bar">
-          <div>© {new Date().getFullYear()} Careviah • Kerala, India</div>
-          <div>
-            <a href="tel:+918547046536" className="btn ghost" style={{ marginRight: 8 }}>Call</a>
-            <a href="https://wa.me/918590722353" className="btn primary">WhatsApp</a>
+          <span>© {new Date().getFullYear()} Careviah • Kerala, India</span>
+          <div className="nav">
+            <a href="tel:+918547046536">Call</a>
+            <a href="https://wa.me/918590722353">WhatsApp</a>
           </div>
         </div>
       </footer>
+
+      {/* Mobile quick actions (hidden on desktop via CSS) */}
+      <div className="bottombar">
+        <a className="primary" href="tel:+918547046536">Call</a>
+        <a href="https://wa.me/918590722353">WhatsApp</a>
+      </div>
     </>
   );
 }
+
 
