@@ -1,21 +1,35 @@
+/* styles/careviah.css
+   Global tokens + layout + shared components
+*/
+
+/* -------- Tokens -------- */
 :root {
-    /* Brand + UI */
-    --bg: #f6f8fb;
-    --surface: #ffffff;
-    --text: #0f172a;
+    --bg: #F6F8FB;
+    --surface: #FFFFFF;
+
+    --brand: #0E7490;
+    /* teal */
+    --brand-600: #0C667D;
+    --brand-700: #0A5568;
+
+    --accent: #F59E0B;
+    /* amber/yellow accent */
+
+    --text: #0F172A;
+    /* slate-900 */
     --muted: #475569;
-    --line: #e8eef5;
+    /* slate-600 */
+    --border: #E5E7EB;
+    /* gray-200 */
 
-    /* Careviah teal */
-    --brand-50: #ecfeff;
-    --brand-100: #cffafe;
-    --brand-600: #0e7490;
-    --brand-700: #0b5e75;
+    --ring: rgba(14, 116, 144, .18);
 
-    --shadow: 0 10px 30px rgba(2, 6, 23, .06);
-    --shadow-lg: 0 22px 48px rgba(2, 6, 23, .12);
+    --radius: 16px;
+    --shadow: 0 10px 32px rgba(2, 6, 23, .08);
+    --shadow-soft: 0 6px 22px rgba(2, 6, 23, .06);
 }
 
+/* -------- Base -------- */
 * {
     box-sizing: border-box
 }
@@ -23,139 +37,371 @@
 html,
 body {
     margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--text);
+    padding: 0
+}
+
+body {
     font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--text);
+    background: var(--bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Links focus/hover */
 a {
-    color: var(--brand-700);
+    color: var(--brand);
     text-decoration: none
 }
 
 a:hover {
-    text-decoration: underline
+    color: var(--brand-600)
 }
 
-/* container */
+a:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 8px;
+}
+
+/* -------- Layout / Container -------- */
 .container {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: 0 16px
+    max-width: 1320px;
+    /* wider, looks great on big monitors */
+    margin-inline: auto;
+    padding-inline: clamp(16px, 4vw, 32px);
 }
 
-/* header */
-header.siteHeader {
+.section {
+    padding-block: clamp(56px, 7vw, 96px);
+}
+
+/* -------- Header -------- */
+.siteHeader {
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(255, 255, 255, .92);
-    backdrop-filter: saturate(180%) blur(6px);
-    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+    background: color-mix(in oklab, var(--bg) 80%, white);
+    border-bottom: 1px solid var(--border);
 }
 
 .siteHeader .bar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 12px 0
+    gap: 24px;
+    padding-block: 12px
 }
 
 .brand {
-    font-weight: 800;
-    letter-spacing: .3px;
-    line-height: 1.1
+    display: flex;
+    flex-direction: column
 }
 
-.brand small {
-    display: block;
-    color: #64748b;
-    font-weight: 500;
-    margin-top: 2px
+.brandLink {
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--text)
+}
+
+.tagline {
+    color: var(--muted);
+    font-size: 12px
 }
 
 .nav {
+    margin-left: auto;
     display: flex;
     gap: 22px;
     align-items: center
 }
 
-.nav a {
-    color: #0f172a;
-    opacity: .82;
-    transition: opacity .2s
+.navLink {
+    color: var(--text)
 }
 
-.nav a:hover {
-    opacity: 1
+.navLink:hover {
+    color: var(--brand)
 }
 
-/* footer */
-footer.siteFooter {
-    margin-top: 48px;
-    border-top: 1px solid var(--line);
-    background: #fff
+/* -------- Footer -------- */
+.siteFooter {
+    border-top: 1px solid var(--border);
+    background: var(--surface);
 }
 
 .siteFooter .bar {
-    padding: 16px 0;
-    color: var(--muted);
-    font-size: 14px;
     display: flex;
     align-items: center;
-    justify-content: space-between
+    justify-content: space-between;
+    padding-block: 18px;
 }
 
-/* shared atoms */
-.badge {
-    display: inline-block;
-    font-size: 12px;
-    background: var(--brand-50);
-    border: 1px solid var(--brand-100);
-    color: var(--brand-700);
+/* -------- Buttons -------- */
+.btn {
+    --pad-y: 12px;
+    --pad-x: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--pad-y) var(--pad-x);
     border-radius: 999px;
-    padding: 6px 10px
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: var(--shadow-soft);
+    transition: transform .05s ease, box-shadow .15s ease, background .2s ease;
 }
 
+.btn:active {
+    transform: translateY(1px)
+}
+
+.btn.primary {
+    background: var(--brand);
+    color: #fff;
+    border: 1px solid var(--brand);
+}
+
+.btn.primary:hover {
+    background: var(--brand-600)
+}
+
+.btn.ghost {
+    background: #fff;
+    color: var(--brand);
+    border: 1px solid var(--brand);
+}
+
+.btn.ghost:hover {
+    background: color-mix(in oklab, var(--brand) 6%, white)
+}
+
+/* -------- Badges / Chips -------- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--brand-700);
+    background: color-mix(in oklab, var(--brand) 12%, white);
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--brand) 18%, white);
+}
+
+/* -------- Cards -------- */
 .card {
     background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: var(--shadow)
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-soft);
+    padding: 24px;
 }
 
-/* mobile bottom buttons */
-.bottombar {
-    position: fixed;
-    bottom: 12px;
-    right: 12px;
-    left: 12px;
-    z-index: 40;
+.card h3 {
+    margin: 0 0 8px 0;
+    font-size: 20px
+}
+
+.card p {
+    margin: 0;
+    color: var(--muted)
+}
+
+/* -------- Grids -------- */
+.autogrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* -------- Hero -------- */
+.hero {
+    /* full-bleed background; inner content stays in .container */
+    background:
+        radial-gradient(1200px 500px at 80% -10%, color-mix(in oklab, var(--brand) 14%, white) 0%, transparent 60%),
+        linear-gradient(180deg, color-mix(in oklab, white 92%, var(--brand) 8%) 0%, var(--bg) 100%);
+    padding-block: clamp(56px, 9vw, 120px);
+}
+
+.hero .eyebrow {
+    display: inline-block;
+    margin-bottom: 12px
+}
+
+.hero h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    line-height: 1.1;
+    margin: 0 0 16px 0;
+    font-weight: 800
+}
+
+.hero .sub {
+    color: var(--muted);
+    font-size: 18px;
+    margin: 0 0 20px 0
+}
+
+.heroGrid {
+    display: grid;
+    align-items: center;
+    gap: clamp(20px, 4vw, 40px);
+    grid-template-columns: 1.15fr .85fr;
+    /* roomy on desktop */
+}
+
+.heroMedia {
+    justify-self: end;
+    filter: drop-shadow(var(--shadow));
+}
+
+.poster {
+    width: min(520px, 100%);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+}
+
+/* Action chips under hero copy */
+.statbar {
     display: flex;
     gap: 10px;
-    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-top: 10px
 }
 
-.bottombar a {
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+.stat {
+    font-size: 12px;
+    color: var(--muted);
     background: #fff;
-    color: #0f172a;
-    text-decoration: none
+    border: 1px solid var(--border);
+    padding: 6px 10px;
+    border-radius: 999px
 }
 
-.bottombar a.primary {
-    background: var(--brand-600);
+/* -------- “Why” & “How it works” -------- */
+.split {
+    display: grid;
+    gap: 24px;
+    align-items: start;
+    grid-template-columns: 2fr 1.2fr;
+}
+
+.steps {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr)
+}
+
+.step {
+    position: relative
+}
+
+.step .num {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    display: inline-grid;
+    place-items: center;
+    font-size: 13px;
+    font-weight: 700;
     color: #fff;
-    border-color: transparent
+    background: var(--accent);
+    box-shadow: 0 4px 14px rgba(245, 158, 11, .32);
+    margin-right: 8px;
 }
 
-@media (min-width:920px) {
-    .bottombar {
-        display: none
+/* -------- FAQ -------- */
+.faqGrid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr 1fr
+}
+
+.faq details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: var(--shadow-soft)
+}
+
+.faq summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 700
+}
+
+.faq summary::marker,
+.faq summary::-webkit-details-marker {
+    display: none
+}
+
+.faq p {
+    color: var(--muted);
+    margin: 10px 0 0 0
+}
+
+/* -------- CTA footer block -------- */
+.cta {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+    text-align: center;
+}
+
+/* -------- Mobile -------- */
+@media (max-width: 1024px) {
+    .heroGrid {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .split {
+        grid-template-columns: 1fr
+    }
+
+    .faqGrid {
+        grid-template-columns: 1fr
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media (max-width: 768px) {
+    .heroGrid {
+        grid-template-columns: 1fr
+    }
+
+    .heroMedia {
+        justify-self: start
+    }
+
+    .poster {
+        width: 100%
+    }
+
+    .steps {
+        grid-template-columns: 1fr 1fr
+    }
+}
+
+/* -------- Mobile sticky action bar -------- */
+.mobileBar {
+    position: sticky;
+    bottom: 0;
+    z-index: 40;
+    display: none;
+    gap: 10px;
+    padding: 10px 12px;
+    background: color-mix(in oklab, var(--bg) 85%, white);
+    border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+    .mobileBar {
+        display: flex
     }
 }
