@@ -4,30 +4,18 @@
 
 /* -------- Tokens -------- */
 :root {
-    --bg: #F6F8FB;
-    --surface: #FFFFFF;
-
-    --brand: #0E7490;
-    /* teal */
-    --brand-600: #0C667D;
-    --brand-700: #0A5568;
-
-    --accent: #F59E0B;
-    /* amber/yellow accent */
-
-    --text: #0F172A;
-    /* slate-900 */
+    --brand: #0e7490;
+    --accent: #f6c653;
+    --bg: #f6f8fb;
+    --ink: #102a43;
     --muted: #475569;
-    /* slate-600 */
-    --border: #E5E7EB;
-    /* gray-200 */
-
-    --ring: rgba(14, 116, 144, .18);
-
-    --radius: 16px;
-    --shadow: 0 10px 32px rgba(2, 6, 23, .08);
-    --shadow-soft: 0 6px 22px rgba(2, 6, 23, .06);
+    --inkDark: #0f172a;
+    --card: #ffffff;
+    --shadow: 0 10px 30px rgba(2, 8, 23, 0.08);
+    --ring: rgba(2, 8, 23, 0.12);
+    --butter: #fff4d9;
 }
+
 
 /* -------- Base -------- */
 * {
