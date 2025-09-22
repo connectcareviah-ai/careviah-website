@@ -1,73 +1,62 @@
 // components/HeroMedia.jsx
 import { useEffect, useState } from "react";
-import Image from "next/image";
-
-// Use your four PNGs from /public/images/hero
-const slides = [
-    { src: "/images/hero/balcony.png", alt: "Caregiver and elder enjoying tea on a Kerala balcony" },
-    { src: "/images/hero/smile.png", alt: "Caregiver smiling with an elder at home" },
-    { src: "/images/hero/Normal.png", alt: "Comfortable conversation at home" },
-    { src: "/images/hero/bp.png", alt: "Vitals check at home by a caregiver" },
-];
 
 export default function HeroMedia() {
-    const [i, setI] = useState(0);
+    // Update file names here if your case is different
+    const slides = [
+        "/images/hero/balcony.png",
+        "/images/hero/smile.png",
+        "/images/hero/Normal.png",
+        "/images/hero/bp.png",
+    ];
+
+    const [idx, setIdx] = useState(0);
 
     useEffect(() => {
-        const id = setInterval(() => setI((p) => (p + 1) % slides.length), 9000); // 9s
-        return () => clearInterval(id);
-    }, []);
+        const t = setInterval(() => setIdx(i => (i + 1) % slides.length), 3500);
+        return () => clearInterval(t);
+    }, [slides.length]);
 
     return (
-        <div className="heroMedia" aria-label="Careviah photo highlights">
-            {slides.map((s, idx) => (
-                <div key={s.src} className={`slide ${i === idx ? "isActive" : ""}`} aria-hidden={i !== idx}>
-                    <Image
-                        src={s.src}
-                        alt={s.alt}
-                        fill
-                        sizes="(max-width: 900px) 100vw, 520px"
-                        priority={idx === 0}
+        <>
+            <figure className="heroMedia">
+                <div className="frame">
+                    {/* Cross-fade layer */}
+                    <div
+                        className="slide"
+                        key={idx}
+                        style={{ backgroundImage: `url(${slides[idx]})` }}
                     />
                 </div>
-            ))}
+            </figure>
 
             <style jsx>{`
-        .heroMedia {
-          position: relative;
-          aspect-ratio: 16/11;
+        .heroMedia { justify-self: end; }
+        .frame {
+          width: min(520px, 100%);
+          aspect-ratio: 4 / 3;
           border-radius: 20px;
           overflow: hidden;
-          box-shadow: 0 14px 44px rgba(2, 8, 23, 0.18);
-          border: 1px solid rgba(15, 23, 42, 0.08);
-          background: #0f172a10;
-          isolation: isolate;
+          border: 1px solid rgba(2, 8, 23, 0.08);
+          box-shadow: 0 20px 50px rgba(2, 8, 23, 0.18);
+          background: #fff;
+          position: relative;
         }
         .slide {
           position: absolute;
           inset: 0;
-          opacity: 0;
-          transition: opacity 900ms ease;
+          background-size: cover;
+          background-position: center;
+          animation: fade .6s ease-out, zoom 6s ease-in-out both;
         }
-        .slide :global(img) {
-          object-fit: cover;
-          transform: scale(1.02);
-        }
-        .slide.isActive {
-          opacity: 1;
-          z-index: 1;
-        }
-        .slide.isActive :global(img) {
-          animation: kenburns 18s ease-in-out forwards;
-        }
-        @keyframes kenburns {
-          from { transform: scale(1.03) translate3d(0, 0, 0); }
-          to   { transform: scale(1.08) translate3d(-1.5%, -1.5%, 0); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .slide :global(img) { animation: none !important; transform: none !important; }
+        @keyframes fade { from { opacity: .15 } to { opacity: 1 } }
+        @keyframes zoom { from { transform: scale(1.04)} to { transform: scale(1)} }
+
+        @media (max-width: 768px) {
+          .heroMedia { justify-self: start; }
+          .frame { width: 100%; }
         }
       `}</style>
-        </div>
+        </>
     );
 }
